@@ -1,7 +1,8 @@
 import "./App.css";
+import MovieSearch from "./MovieSearch/MovieSearch";
 
 function App() {
-  return <div />;
+  return <MovieSearch />;
 }
 
 export default App;
