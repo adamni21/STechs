@@ -1,7 +1,7 @@
 import { kyd } from "./kyd";
 
 interface ResponseBody {
-  poster_path: string;
+  movie_results: { poster_path: string }[];
 }
 
 const url = "https://api.themoviedb.org/3/find/";
@@ -22,7 +22,7 @@ export const GetMovieImage = async (imdbId: string, signal?: AbortSignal) => {
     })
     .json();
 
-  return json.poster_path;
+  return json.movie_results[0].poster_path;
 };
 
 type Size = "w92" | "w154" | "w185" | "w342" | "w500" | "w780";
