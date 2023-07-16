@@ -3,6 +3,8 @@ import { useQuery } from "react-query";
 import { SearchMovies } from "../api/SearchMovie";
 import { useDebounced } from "../hooks/useDebounced";
 import { Movie } from "../types";
+import MovieCard from "./MovieCard";
+import SearchBox from "./SearchBox";
 
 const MovieSearch = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -16,18 +18,21 @@ const MovieSearch = () => {
   });
 
   return (
-    <>
-      <input
+    <div className="sm:w-full md:w-2/3 mx-auto min-h-screen ">
+      <SearchBox
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}
+        isLoading={isLoading}
       />
-      {isLoading && <h2>LOADING!...</h2>}
-      <ul>
+      <div className="max-w-2xl mx-auto px-5 flex flex-wrap justify-center gap-4">
         {movies.map(({ title, imdbId }) => (
-          <li key={imdbId}>{title}</li>
+          <MovieCard title={title} imdbId={imdbId} key={imdbId} />
         ))}
-      </ul>
-    </>
+        {!movies.length && (
+          <p className="text-xl text-slate-100 py-5">No Results!</p>
+        )}
+      </div>
+    </div>
   );
 };
 
