@@ -1,8 +1,11 @@
-import "./App.css";
 import MovieSearch from "./MovieSearch/MovieSearch";
 
 function App() {
-  return <MovieSearch />;
+  return (
+    <main className="bg-slate-900">
+      <MovieSearch />
+    </main>
+  );
 }
 
 export default App;
