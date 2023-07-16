@@ -11,8 +11,7 @@ interface Post {
   };
 }
 
-const url =
-  "https://api.netzkino.de.simplecache.net/capi-2.0a/search?q=hitchcock&d=devtest";
+const url = "https://api.netzkino.de.simplecache.net/capi-2.0a/search";
 
 export const SearchMovies = async (
   searchValue: string,
@@ -28,8 +27,16 @@ export const SearchMovies = async (
     })
     .json();
 
-  return json.posts.map((movie) => ({
-    title: movie.title,
-    imdbId: new URL(movie.custom_fields["IMDb-Link"][0]).pathname.split("/")[2],
-  }));
+  return json.posts.map((movie) => {
+    const imdbId = extractImdbId(movie.custom_fields["IMDb-Link"][0]);
+    return {
+      title: movie.title,
+      imdbId: imdbId,
+    };
+  });
 };
+
+function extractImdbId(url: string) {
+  if (!url.length) return undefined;
+  return new URL(url).pathname.split("/")[2];
+}
