@@ -1,7 +1,7 @@
 import { kyd } from "./kyd";
 
 interface ResponseBody {
-  movie_results: { poster_path: string }[];
+  movie_results: { poster_path?: string }[];
 }
 
 const url = "https://api.themoviedb.org/3/find/";
