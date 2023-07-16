@@ -30,6 +30,6 @@ export const SearchMovies = async (
 
   return json.posts.map((movie) => ({
     title: movie.title,
-    imdbId: movie.custom_fields["IMDb-Link"][0].split("/").slice(-1)[0],
+    imdbId: new URL(movie.custom_fields["IMDb-Link"][0]).pathname.split("/")[2],
   }));
 };
