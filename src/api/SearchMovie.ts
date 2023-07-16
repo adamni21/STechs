@@ -36,7 +36,10 @@ export const SearchMovies = async (
   });
 };
 
-function extractImdbId(url: string) {
-  if (!url.length) return undefined;
-  return new URL(url).pathname.split("/")[2];
+export function extractImdbId(url: string) {
+  try {
+    return new URL(url).pathname.split("/")[2];
+  } catch (error) {
+    return undefined;
+  }
 }
