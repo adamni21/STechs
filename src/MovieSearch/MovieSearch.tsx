@@ -23,7 +23,10 @@ const MovieSearch = () => {
         onChange={(e) => setSearchValue(e.target.value)}
         isLoading={isLoading}
       />
-      <div className="max-w-2xl mx-auto px-5 flex flex-wrap justify-center gap-4">
+      <div
+        className="max-w-2xl mx-auto px-5 flex flex-wrap justify-center gap-4"
+        data-testid="searchResults"
+      >
         {movies.map(({ title, imdbId }) => (
           <MovieCard title={title} imdbId={imdbId} key={imdbId ?? title} />
         ))}

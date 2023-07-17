@@ -5,7 +5,7 @@ import MovieSearch from "./MovieSearch/MovieSearch";
 //                hh   mm   ss     ms
 const cacheTime = 24 * 60 * 60 * 1000;
 
-const queryClient = new QueryClient({
+export const queryClient = new QueryClient({
   defaultOptions: {
     queries: { refetchOnMount: false, refetchOnWindowFocus: false, cacheTime },
   },
