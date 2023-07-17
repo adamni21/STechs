@@ -11,16 +11,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { queryClient } from "../App";
 import MovieSearch from "./MovieSearch";
 
-import * as SearchMovieMod from "../api/SearchMovie";
-import { Movie } from "../types";
-
-vi.mock("../api/SearchMovie", async (importOriginal) => {
-  const mod = await importOriginal<typeof SearchMovieMod>();
-  return {
-    ...mod,
-    SearchMovie: vi.fn((search: string) => searchMovieMocked(search)),
-  };
-});
+vi.mock("../api/SearchMovie");
 
 describe("MovieSearch", () => {
   beforeEach(async () => {
@@ -71,24 +62,3 @@ describe("MovieSearch", () => {
     vi.useRealTimers();
   });
 });
-
-function searchMovieMocked(search: string) {
-  const data: Record<string, Movie[]> = {
-    kert: [
-      {
-        title: "Nightsession",
-        imdbId: "tt4796614",
-      },
-      {
-        title: "Die Kuckucks",
-        imdbId: "tt0041564",
-      },
-      {
-        title: "Death Hunter",
-        imdbId: "tt1736251",
-      },
-    ],
-  };
-
-  return data[search] ?? [];
-}
