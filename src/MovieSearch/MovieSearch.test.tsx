@@ -13,18 +13,10 @@ import MovieSearch from "./MovieSearch";
 
 vi.mock("../api/SearchMovie");
 vi.mock("../api/GetMovieImage");
+vi.mock("../hooks/useIntersectedViewport");
 
 describe("MovieSearch", () => {
   beforeEach(async () => {
-    // IntersectionObserver isn't available in test environment
-    const mockIntersectionObserver = vi.fn();
-    mockIntersectionObserver.mockReturnValue({
-      observe: () => null,
-      unobserve: () => null,
-      disconnect: () => null,
-    });
-    window.IntersectionObserver = mockIntersectionObserver;
-
     vi.clearAllMocks();
     await act(() =>
       render(
