@@ -26,7 +26,7 @@ const MovieSearch = () => {
       />
       <div className="max-w-2xl mx-auto px-5 flex flex-wrap justify-center gap-4">
         {movies.map(({ title, imdbId }) => (
-          <MovieCard title={title} imdbId={imdbId} key={imdbId} />
+          <MovieCard title={title} imdbId={imdbId} key={imdbId ?? title} />
         ))}
         {!movies.length && (
           <p className="text-xl text-slate-100 py-5">No Results!</p>
