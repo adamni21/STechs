@@ -12,6 +12,7 @@ import { queryClient } from "../App";
 import MovieSearch from "./MovieSearch";
 
 vi.mock("../api/SearchMovie");
+vi.mock("../api/GetMovieImage");
 
 describe("MovieSearch", () => {
   beforeEach(async () => {
