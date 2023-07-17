@@ -14,7 +14,6 @@ const MovieSearch = () => {
     queryKey: ["search", search],
     queryFn: ({ signal }) => SearchMovies(search, signal),
     onSuccess: (data) => setMovies(data),
-    enabled: searchValue.length > 0,
   });
 
   return (

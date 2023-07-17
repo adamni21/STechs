@@ -17,6 +17,8 @@ export const SearchMovies = async (
   searchValue: string,
   signal?: AbortSignal
 ) => {
+  if (searchValue.length < 3) return [];
+
   const json: ResponseBody = await kyd
     .get(url, {
       searchParams: {
