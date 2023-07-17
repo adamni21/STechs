@@ -13,7 +13,7 @@ interface Post {
 
 const url = "https://api.netzkino.de.simplecache.net/capi-2.0a/search";
 
-export const SearchMovies = async (
+export const SearchMovie = async (
   searchValue: string,
   signal?: AbortSignal
 ) => {

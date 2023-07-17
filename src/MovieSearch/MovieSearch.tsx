@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { SearchMovies } from "../api/SearchMovie";
+import { SearchMovie } from "../api/SearchMovie";
 import { useDebounced } from "../hooks/useDebounced";
 import { Movie } from "../types";
 import MovieCard from "./MovieCard";
@@ -12,7 +12,7 @@ const MovieSearch = () => {
   const search = useDebounced(searchValue, 400);
   const { isLoading } = useQuery({
     queryKey: ["search", search],
-    queryFn: ({ signal }) => SearchMovies(search, signal),
+    queryFn: ({ signal }) => SearchMovie(search, signal),
     onSuccess: (data) => setMovies(data),
   });
 

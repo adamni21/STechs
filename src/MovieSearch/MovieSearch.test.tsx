@@ -18,7 +18,7 @@ vi.mock("../api/SearchMovie", async (importOriginal) => {
   const mod = await importOriginal<typeof SearchMovieMod>();
   return {
     ...mod,
-    SearchMovies: vi.fn((search: string) => searchMovieMocked(search)),
+    SearchMovie: vi.fn((search: string) => searchMovieMocked(search)),
   };
 });
 
