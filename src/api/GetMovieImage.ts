@@ -22,7 +22,7 @@ export const GetMovieImage = async (imdbId: string, signal?: AbortSignal) => {
     })
     .json();
 
-  return json.movie_results[0].poster_path;
+  return json.movie_results[0].poster_path ?? undefined;
 };
 
 type Size = "w92" | "w154" | "w185" | "w342" | "w500" | "w780";
