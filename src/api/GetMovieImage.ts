@@ -10,7 +10,9 @@ const api_key = import.meta.env.VITE_TMDB_KEY as string;
 const language = "en-US";
 const external_source = "imdb_id";
 
-export const GetMovieImage = async (imdbId: string, signal?: AbortSignal) => {
+export const GetMovieImage = async (imdbId?: string, signal?: AbortSignal) => {
+  if (!imdbId) return undefined;
+
   const json: ResponseBody = await kyd
     .get(url + imdbId, {
       searchParams: {
