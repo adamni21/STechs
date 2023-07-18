@@ -5,7 +5,7 @@ interface ResponseBody {
 }
 
 interface Post {
-  title: "string";
+  title: string;
   custom_fields: {
     "IMDb-Link": string[];
   };
