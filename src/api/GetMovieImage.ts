@@ -30,4 +30,4 @@ type Size = "w92" | "w154" | "w185" | "w342" | "w500" | "w780";
 const imageBaseUrl = "http://image.tmdb.org/t/p";
 
 export const imageUrl = (path: string, size: Size) =>
-  `${imageBaseUrl}/${size}/${path}`;
+  `${imageBaseUrl}/${size}${path}`;
